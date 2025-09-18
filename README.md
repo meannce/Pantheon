@@ -36,4 +36,5 @@ Open the given URL and create an account - you're all set, you should now see th
 There are currently two scripts available (look in the `scripts` folder).
 
 `001_add_steam_games.js` - import every game from Steam in order to bootstrap/update the available games in the API/platform.
+
 `002_migrate_previous_website_data.js` - import game reviews from a JSON file (data from a previous platform).

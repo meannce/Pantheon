@@ -1,0 +1,22 @@
+services:
+    pocketbase:
+        build:
+            dockerfile: Dockerfile
+        ports:
+            - "${PB_PORT}:8000"
+        volumes:
+            - "./pb_data:/pb/pb_data"
+            - "./pb_hooks:/pb/pb_hooks"
+            - "./pb_migrations:/pb/pb_migrations"
+        environment:
+            - PB_ENV=${PB_ENV}
+            - PB_URL=${PB_URL}
+            - PB_PORT=${PB_PORT}
+            - PB_ADMIN_EMAIL=${PB_ADMIN_EMAIL}
+            - PB_ADMIN_PASSWORD=${PB_ADMIN_PASSWORD}
+        networks:
+            - pocketbase
+
+networks:
+    pocketbase:
+        driver: bridge

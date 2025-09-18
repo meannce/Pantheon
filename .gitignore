@@ -1,0 +1,11 @@
+.vscode
+
+node_modules
+.DS_Store
+
+pb_data
+build
+fixtures
+
+.env
+.env.*

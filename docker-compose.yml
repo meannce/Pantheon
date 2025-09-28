@@ -17,6 +17,18 @@ services:
         networks:
             - pocketbase
 
+    web:
+      build:
+        context: ./nginx
+      ports:
+        - "8080:80"
+      depends_on:
+        - pocketbase
+      volumes:
+        - ./frontend:/usr/share/nginx/html:ro
+      networks:
+        - pocketbase
+
 networks:
     pocketbase:
         driver: bridge

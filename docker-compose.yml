@@ -8,6 +8,8 @@ services:
             - "./pb_data:/pb/pb_data"
             - "./pb_hooks:/pb/pb_hooks"
             - "./pb_migrations:/pb/pb_migrations"
+            - "./frontend:/pb/public"
+        command: /pb/pocketbase serve --http="0.0.0.0:8000" --publicDir="/pb/public"
         environment:
             - PB_ENV=${PB_ENV}
             - PB_URL=${PB_URL}
@@ -16,18 +18,6 @@ services:
             - PB_ADMIN_PASSWORD=${PB_ADMIN_PASSWORD}
         networks:
             - pocketbase
-
-    web:
-      build:
-        context: ./nginx
-      ports:
-        - "8080:80"
-      depends_on:
-        - pocketbase
-      volumes:
-        - ./frontend:/usr/share/nginx/html:ro
-      networks:
-        - pocketbase
 
 networks:
     pocketbase:
